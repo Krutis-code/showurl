@@ -7,7 +7,7 @@ import {
   
   useLocation,useHistory
 } from "react-router-dom";
-import {useState,useEffect} from 'react';
+import {useState} from 'react';
 import './App.css';
 
 
@@ -34,15 +34,12 @@ const Child = ({setNames,names}) => {
   const query = useQuery();
    const aname = query.get("a");
    const bname = query.get("b");
-   useEffect(()=>{
-          
-    setNames({name1:aname,name2:bname});
-      
-    },[]);
+  
   const history = useHistory();
           console.log(history);
         
-      const ClickHandle = () =>{       
+      const ClickHandle = () =>{ 
+        setNames(names={name1:aname,name2:bname})    
         console.log("clicked")
         history.push({pathname:'/NewPage',
         state:names});
